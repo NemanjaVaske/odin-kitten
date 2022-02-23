@@ -1,0 +1,53 @@
+
+<% if @kitten.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@kitten.errors.count, "error") %> prohibited this kitten from being borne to Asgard:</h3>
+
+    <ul>
+      <% @kitten.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: kitten do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% kitten.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+    <% kitten.errors.full_messages_for(:age).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :cuteness %><br>
+    <%= form.number_field :cuteness %>
+    <% kitten.errors.full_messages_for(:cuteness).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :softness %><br>
+    <%= form.text_field :softness %>
+    <% kitten.errors.full_messages_for(:softness).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to "Back", root_path%>

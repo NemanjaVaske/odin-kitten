@@ -1,0 +1,16 @@
+<h1>Kittens</h1>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+<ul>
+    <% @kittens.each do |kitten|%>
+        <li>
+            <%= kitten.name%>
+            <%= link_to "Show", kitten%>
+            <%= link_to "Edit", edit_kitten_path(kitten) %>
+            <%= link_to "Destroy", kitten, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+    <%end%>
+</ul>
+
+<%= link_to "New Kitten", new_kitten_path %>
